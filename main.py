@@ -88,3 +88,9 @@ test_renderer()
 ##### Movement Gaming
 # - Now that you render entity correctly and have the player in world.dict
 # you can use the data in world.dict and finally move around. Goodluck
+
+# final note-ultra important
+# render_initialization shouldn't be a render method, it should be removed.
+# initial terrain generation should be handled in the world object, still based on player spawn.
+# its gonna be a new World method, only used after player object has been created.
+# its gonna be like render_initialization but without printing.
