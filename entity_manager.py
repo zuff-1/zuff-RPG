@@ -1,36 +1,47 @@
 
 
-import random
 import sys
-import os
-import time
-
-import central_registry
 
 
-class class_entity:
 
-    def __init__ (self, name, position=None):
+
+
+class Entity:
+    def __init__(
+            self,
+            name = None,
+            position = None,
+            ):
         self.name = name
-        if position is not None:
-            self.position = position
+        self.position = position
+        
+        if self.position is None:
+            print(f"Invalid entity position, fix NOWWWW")
+            sys.exit()
         else:
-            self.position = [0, 0]
+            pass
 
 
-class class_player(class_entity):
+class Player(Entity):
+    def __init__(
+            self,
+            name = None,
+            position = None,
+            ):
+        super().__init__(
+            name,
+            position,
+            )
+        
 
-    def __init__ (self, name, position=None):
-        super().__init__(name, position)
+def test_Player():
+    player = Player(
+        "zuff",
+        [0, 0]
+        )
+    print(player.name)
+    print(player.position)
 
 
-class class_entitiy_behavior:
-
-    def entity_move(self, change_x, change_y):
-        old_key = (self.position[0], self.position[1])
-        world_object = central_registry.central_registry["class_object_overworld"]
-        entity_in_world_dict = world_object.world_dict[old_key].pop(1)
-        self.position[0] += change_x
-        self.position[1] += change_y
-        new_key = (self.position[0], self.position[1])
-        world_object.world_dict[new_key].append(entity_in_world_dict)
+if __name__ == "__main__":
+    test_Player()

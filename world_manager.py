@@ -1,27 +1,54 @@
 
 
 import random
-import sys
-import os
-import time
 
 
-class class_terrain_generator:
+class TerrainGeneration:
 
-    def generate_tile ():
+    def generate_tile():
         if random.random() < 0.1:
             return "V"
         else:
             return "_"
 
 
-class class_world:
-    
-    def __init__ (self, name):
-        self.name = name
-        self.world_dict = {}
-        self.class_terrain_generator = class_terrain_generator
+class World:
 
-    def assign_new_tile(self, cords_x, cords_y):
-        tile = self.class_terrain_generator.generate_tile()
-        self.world_dict[cords_x, cords_y] = tile
+    def __init__(self, name):
+        self.name = name
+        self.dict = {}
+
+    def assign_new_terrain(
+            self,
+            cords_x,
+            cords_y,
+            ):
+        self.dict[
+            cords_x,
+            cords_y,
+            ] = {}
+        self.dict[
+            cords_x,
+            cords_y,
+            ]["terrain"] = [
+                TerrainGeneration.
+                generate_tile()
+                ]
+
+
+def test_World():
+    overworld = World("balls")
+    overworld.assign_new_terrain(3, 5)
+
+    print(f"self.name = {overworld.name}")
+    print(f"generated terrain: {overworld.dict[3, 5]["terrain"][0]}")
+    print(f"self.dict = {overworld.dict}")
+
+
+def test_TerrainGeneration():
+    tile = TerrainGeneration.generate_tile()
+    print(tile)
+
+
+if __name__ == "__main__":
+    test_World()

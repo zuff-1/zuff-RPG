@@ -1,50 +1,68 @@
 
 
-import random
 import sys
 import os
-import time
 
+import central_registry
 import world_manager
 import entity_manager
-import user_interface
-import renderer
-import central_registry
-import input_manager
-
+import renderer_2d
 
 def function_clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
 
 def function_enter_to_continue():
-    return input("\nPress Enter to continue...")
+    input("\nPress Enter to continue...")
+
+def create_define_all_object():
+    (
+    central_registry.
+    CentralRegistryControls.
+    set_central_registry(
+        "overworld",
+        world_manager.World("overworld")
+        )
+    )
+    (
+    central_registry.
+    CentralRegistryControls.
+    set_central_registry(
+        "player",
+        entity_manager.Player(
+            "zuff",
+            [0, 0],
+            )
+        )
+    )
+    (
+    central_registry.
+    CentralRegistryControls.
+    set_central_registry(
+        "renderer",
+        renderer_2d.Renderer(11)
+        )
+    )
+    world =(
+        central_registry.
+        CentralRegistryControls.
+        get_central_registry("overworld")
+        )
+    player =(
+        central_registry.
+        CentralRegistryControls.
+        get_central_registry("player")
+        )
+    renderer =(
+        central_registry.
+        CentralRegistryControls.
+        get_central_registry("renderer")
+        )
+    
+    return world, player, renderer
 
 
-class_object_overworld = central_registry.set_central_registry(
-    "class_object_overworld",
-    world_manager.class_world("Overworld")
-)
+def test_renderer():
+    world, player, renderer = create_define_all_object()
+    renderer.render_from_player(player, world)
 
-class_object_player = central_registry.set_central_registry(
-    "class_object_player",
-    entity_manager.class_player("zuff")
-)
-
-class_object_renderer = central_registry.set_central_registry(
-    "class_object_renderer",
-    renderer.class_renderer(11)
-)
-
-
-def main_sequence():
-    user_interface.class_user_interface.start_menu()
-    while True:
-        function_clear_screen()
-        class_object_renderer.render_from_player(
-            class_object_overworld,
-            class_object_player)
-        input_manager.class_player_input.gameplay_state_input()
-        
-
-
-main_sequence()
+test_renderer()
