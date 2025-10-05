@@ -80,5 +80,11 @@ test_renderer()
 ##### Initial Spawn Process (to put player in world.dict)
 # 1. generate from player spawn, use player.position to render and generate initial terrain
 # 2. initial terrain is generated, place player in world.dict
-##### Fix Renderer
-# - 
+##### Make New Renderer
+# - render_initialization only renders terrain for initialization purposes
+# - once player is in world.dict: use NEW RENDER FUNCTION (That you're gonna make)
+# - NEW RENDER FUNCTION checks if theres entity,
+# if there is, it renders entity, if there isn't it renders terrain.
+##### Movement Gaming
+# - Now that you render entity correctly and have the player in world.dict
+# you can use the data in world.dict and finally move around. Goodluck
