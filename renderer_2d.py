@@ -4,6 +4,7 @@
 import world_manager
 import entity_manager
 
+
 class Renderer:
 
     def __init__(
@@ -12,7 +13,7 @@ class Renderer:
             ):
         self.render_distance = render_distance
     
-    def render_from_player(
+    def render_initialization(
             self,
             player: entity_manager.Player,
             world: world_manager.World,     
@@ -34,13 +35,15 @@ class Renderer:
                         [tuple(render_target)]
                         ["terrain"]
                         [0],
-                        end = "")
+                        end = ""
+                        )
                 else:
                     print(
                         world.dict
                         [tuple(render_target)]
                         ["terrain"]
                         [0],
-                        end = "")
+                        end = ""
+                        )
 
     

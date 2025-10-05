@@ -63,6 +63,22 @@ def create_define_all_object():
 
 def test_renderer():
     world, player, renderer = create_define_all_object()
-    renderer.render_from_player(player, world)
+    renderer.render_initialization(player, world)
 
 test_renderer()
+
+## Notes for next session
+#
+## General concept infos and reads:
+# player has position attribute but is actually not yet in world.dict
+# player can't be placed in world.dict immediately because nothing exists there initially
+# 
+# terrain generation fully relies on renderer
+#
+### ACTUAL GUIDE FOR NEXT SESSION:
+#
+##### Initial Spawn Process (to put player in world.dict)
+# 1. generate from player spawn, use player.position to render and generate initial terrain
+# 2. initial terrain is generated, place player in world.dict
+##### Fix Renderer
+# - 
