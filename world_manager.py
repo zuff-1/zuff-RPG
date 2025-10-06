@@ -1,6 +1,9 @@
 
 
+import sys
 import random
+
+import entity_manager
 
 
 class TerrainGeneration:
@@ -34,6 +37,43 @@ class World:
                 TerrainGeneration.
                 generate_tile()
                 ]
+        
+        self.dict[cords_x, cords_y,][
+            "entity"] = []
+        
+
+        
+    def initialize_world(
+            self,
+            player: entity_manager.Player,
+            render_distance,
+            ):
+        for row in range(render_distance):
+            for column in range(render_distance):
+                generate_target = [
+                    player.position[0]
+                    + (column - (((render_distance + 1) // 2) - 1)),
+                    player.position[1]
+                    + (row - (((render_distance + 1) // 2) - 1)),
+                    ]
+                if tuple(generate_target) not in self.dict:
+                    self.assign_new_terrain(*generate_target)
+                else:
+                    pass
+    
+    def assign_entity(
+            self,
+            entity: entity_manager.Entity,
+            ):
+        if not self.dict[
+            tuple(entity.position)
+            ]["entity"]:
+            self.dict[
+                tuple(entity.position)
+                ]["entity"] = [entity]
+        else:
+            print("Theres already an entity on tile!!! fix NOWWWW")
+            sys.exit()
 
 
 def test_World():

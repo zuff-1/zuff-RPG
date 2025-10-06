@@ -31,6 +31,7 @@ def create_define_all_object():
         entity_manager.Player(
             "zuff",
             [0, 0],
+            "overworld",
             )
         )
     )
@@ -61,11 +62,30 @@ def create_define_all_object():
     return world, player, renderer
 
 
-def test_renderer():
+def test_initialization():
     world, player, renderer = create_define_all_object()
-    renderer.render_initialization(player, world)
+    world_manager.World.initialize_world(
+        world,
+        player,
+        renderer.render_distance
+        )
+    world_manager.World.assign_entity(world, player)
+    renderer_2d.Renderer.render_from_player(renderer, player, world)
 
-test_renderer()
+
+test_initialization()
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Notes for next session
 #

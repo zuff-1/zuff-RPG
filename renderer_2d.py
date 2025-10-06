@@ -13,7 +13,7 @@ class Renderer:
             ):
         self.render_distance = render_distance
     
-    def render_initialization(
+    def render_from_player(
             self,
             player: entity_manager.Player,
             world: world_manager.World,     
@@ -23,13 +23,19 @@ class Renderer:
             for column in range(self.render_distance):
                 render_target = [
                     player.position[0]
-                    + (column - (((self.render_distance+1)//2)-1)),
+                    + (column - (((self.render_distance + 1) // 2) - 1)),
                     player.position[1]
-                    + (row - (((self.render_distance+1)//2)-1))
-                ]
+                    + (row - (((self.render_distance + 1) // 2) - 1)),
+                    ]
                 if tuple(render_target) not in world.dict:
                     world.assign_new_terrain(*render_target)
-                    
+                else:
+                    pass
+                if not(
+                    world.dict
+                    [tuple(render_target)]
+                    ["entity"]
+                    ): 
                     print(
                         world.dict
                         [tuple(render_target)]
@@ -41,9 +47,7 @@ class Renderer:
                     print(
                         world.dict
                         [tuple(render_target)]
-                        ["terrain"]
-                        [0],
+                        ["entity"]
+                        [0].sprite,
                         end = ""
                         )
-
-    
