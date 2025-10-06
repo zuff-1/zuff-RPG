@@ -12,7 +12,7 @@ class TerrainGeneration:
         if random.random() < 0.1:
             return "V"
         else:
-            return "_"
+            return "."
 
 
 class World:

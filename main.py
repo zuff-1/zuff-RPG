@@ -40,7 +40,7 @@ def create_define_all_object():
     CentralRegistryControls.
     set_central_registry(
         "renderer",
-        renderer_2d.Renderer(11)
+        renderer_2d.Renderer(9)
         )
     )
     world =(
