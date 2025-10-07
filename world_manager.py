@@ -9,8 +9,15 @@ import entity_manager
 class TerrainGeneration:
 
     def generate_tile():
-        if random.random() < 0.1:
+        rng = random.random()
+        if rng < 0.03:
             return "V"
+        elif rng < 0.1:
+            return "v"
+        elif rng < 0.15:
+            return ";"
+        elif rng < 0.2:
+            return ","
         else:
             return "."
 
@@ -33,13 +40,16 @@ class World:
         self.dict[
             cords_x,
             cords_y,
-            ]["terrain"] = [
-                TerrainGeneration.
-                generate_tile()
-                ]
+            ][
+            "terrain"
+            ] = [
+            TerrainGeneration.
+            generate_tile()
+            ]
         
         self.dict[cords_x, cords_y,][
-            "entity"] = []
+            "entity"
+            ] = []
         
 
         
@@ -67,10 +77,14 @@ class World:
             ):
         if not self.dict[
             tuple(entity.position)
-            ]["entity"]:
+            ][
+            "entity"
+            ]:
             self.dict[
                 tuple(entity.position)
-                ]["entity"] = [entity]
+                ][
+                "entity"
+                ] = [entity]
         else:
             print("Theres already an entity on tile!!! fix NOWWWW")
             sys.exit()

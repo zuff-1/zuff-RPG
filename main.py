@@ -1,5 +1,6 @@
 
 
+import time
 import sys
 import os
 
@@ -7,6 +8,8 @@ import central_registry
 import world_manager
 import entity_manager
 import renderer_2d
+
+
 
 def function_clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
@@ -40,7 +43,7 @@ def create_define_all_object():
     CentralRegistryControls.
     set_central_registry(
         "renderer",
-        renderer_2d.Renderer(9)
+        renderer_2d.Renderer(11)
         )
     )
     world =(
@@ -73,44 +76,15 @@ def test_initialization():
     renderer_2d.Renderer.render_from_player(renderer, player, world)
 
 
+    for i in range(200):
+        function_clear_screen()
+        entity_manager.Entity.change_location(player, [i, 0])
+        renderer_2d.Renderer.render_from_player(renderer, player, world)
+        time.sleep(0.1)
+
+
 test_initialization()
 
 
 
 
-
-
-
-
-
-
-
-
-
-## Notes for next session
-#
-## General concept infos and reads:
-# player has position attribute but is actually not yet in world.dict
-# player can't be placed in world.dict immediately because nothing exists there initially
-# 
-# terrain generation fully relies on renderer
-#
-### ACTUAL GUIDE FOR NEXT SESSION:
-#
-##### Initial Spawn Process (to put player in world.dict)
-# 1. generate from player spawn, use player.position to render and generate initial terrain
-# 2. initial terrain is generated, place player in world.dict
-##### Make New Renderer
-# - render_initialization only renders terrain for initialization purposes
-# - once player is in world.dict: use NEW RENDER FUNCTION (That you're gonna make)
-# - NEW RENDER FUNCTION checks if theres entity,
-# if there is, it renders entity, if there isn't it renders terrain.
-##### Movement Gaming
-# - Now that you render entity correctly and have the player in world.dict
-# you can use the data in world.dict and finally move around. Goodluck
-
-# final note-ultra important
-# render_initialization shouldn't be a render method, it should be removed.
-# initial terrain generation should be handled in the world object, still based on player spawn.
-# its gonna be a new World method, only used after player object has been created.
-# its gonna be like render_initialization but without printing.

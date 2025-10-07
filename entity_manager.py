@@ -2,7 +2,7 @@
 
 import sys
 
-
+import central_registry
 
 
 
@@ -24,6 +24,33 @@ class Entity:
             sys.exit()
         else:
             pass
+
+    def change_location(
+            self,
+            target_position,
+            ):
+        world = (
+        central_registry.
+        central_registry[self.world]
+        )
+        obj = world.dict[
+            tuple(self.position)
+            ][
+            "entity"
+            ].pop()
+        
+        world.dict[
+            tuple(target_position)
+            ][
+            "entity"
+            ].append(obj)
+        self.position = target_position
+
+        
+
+        pass
+
+
 
 
 class Player(Entity):
