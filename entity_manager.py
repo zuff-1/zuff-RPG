@@ -46,12 +46,6 @@ class Entity:
             ].append(obj)
         self.position = target_position
 
-        
-
-        pass
-
-
-
 
 class Player(Entity):
     def __init__(
@@ -68,6 +62,15 @@ class Player(Entity):
             sprite,
             )
         
+    def move(self, dx, dy):
+        target_position = [
+            self.position[0] + dx,
+            self.position[1] + dy,
+            ]
+        Entity.change_location(
+            self,
+            target_position,
+            )
 
 def test_Player():
     player = Player(
@@ -80,6 +83,5 @@ def test_Player():
     print(player.position)
     print(player.world)
 
-
 if __name__ == "__main__":
-    test_Player()
+    test_move()

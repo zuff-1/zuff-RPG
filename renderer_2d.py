@@ -18,15 +18,16 @@ class Renderer:
             player: entity_manager.Player,
             world: world_manager.World,     
             ):
+        
+        half = self.render_distance // 2
+        
         for row in range(self.render_distance):
             print("")
             for column in range(self.render_distance):
                 render_target = [
-                    player.position[0]
-                    + (column - (((self.render_distance + 1) // 2) - 1)),
-                    player.position[1]
-                    + (row - (((self.render_distance + 1) // 2) - 1)),
-                    ]
+                    player.position[0] + (column - half),
+                    player.position[1] - (row - half),
+                ]
                 if tuple(render_target) not in world.dict:
                     world.assign_new_terrain(*render_target)
                 else:

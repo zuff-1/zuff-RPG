@@ -1,6 +1,5 @@
 
 
-import time
 import sys
 import os
 
@@ -8,6 +7,8 @@ import central_registry
 import world_manager
 import entity_manager
 import renderer_2d
+import user_interface
+import user_input_manager
 
 
 
@@ -64,23 +65,52 @@ def create_define_all_object():
     
     return world, player, renderer
 
+world, player, renderer = create_define_all_object()
+
+
+
 
 def test_initialization():
-    world, player, renderer = create_define_all_object()
     world_manager.World.initialize_world(
         world,
         player,
         renderer.render_distance
         )
     world_manager.World.assign_entity(world, player)
-    renderer_2d.Renderer.render_from_player(renderer, player, world)
+    print("")
+    print("w,a,s,d is the command to move around")
+    print("/done is the command to exit")
+    print("")
+    input("Press Enter to Continue...")
 
-
-    for i in range(200):
+    while True:
         function_clear_screen()
-        entity_manager.Entity.change_location(player, [i, 0])
         renderer_2d.Renderer.render_from_player(renderer, player, world)
-        time.sleep(0.1)
+        print("")
+        user_input = (
+            user_interface.
+            UserInterface.
+            input_ui()
+            )
+        
+        if user_input == "/done":
+            sys.exit()
+
+        delta_coords = (
+            user_input_manager.
+            UserInputManager.
+            player_movement(
+                user_input
+                )
+            )
+        player.move(
+            delta_coords[0], 
+            delta_coords[1],
+            )
+
+
+
+
 
 
 test_initialization()
