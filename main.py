@@ -109,7 +109,8 @@ def test_initialization():
             )
 
 
-
+# reminder to update renderer/terrain,
+# make every character same length
 
 
 

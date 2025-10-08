@@ -20,7 +20,7 @@ class Renderer:
             ):
         
         half = self.render_distance // 2
-        
+
         for row in range(self.render_distance):
             print("")
             for column in range(self.render_distance):
@@ -37,18 +37,20 @@ class Renderer:
                     [tuple(render_target)]
                     ["entity"]
                     ): 
-                    print(
+                    text = (
                         world.dict
                         [tuple(render_target)]
                         ["terrain"]
                         [0],
-                        end = ""
                         )
+                    text = text[0]
+                    print(text.center(2), end = "")
                 else:
-                    print(
+                    text = (
                         world.dict
                         [tuple(render_target)]
                         ["entity"]
-                        [0].sprite,
-                        end = ""
+                        [0].sprite
                         )
+                    text = text[0]
+                    print(text.center(2), end = "")
