@@ -1,2 +1,4 @@
-Currently still only a python script requiring you to run it yourself.
-main.py is the main file and is the file to run.
+# Cool Game Where You Can Do Stuff
+
+Made completely from scratch without using any game libraries.
+main.py is the file to run.
