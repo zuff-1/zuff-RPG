@@ -3,12 +3,12 @@
 import sys
 import os
 
-import central_registry
+import game_engine_folder.central_registry as central_registry
 import game_engine_folder.world_manager as world_manager
-import entity_manager
-import renderer_2d
+import game_engine_folder.entity_manager as entity_manager
+import game_engine_folder.renderer_2d as renderer_2d
 import user_interface_folder.user_interface as user_interface
-import user_input_manager
+import game_engine_folder.user_input_manager as user_input_manager
 
 
 

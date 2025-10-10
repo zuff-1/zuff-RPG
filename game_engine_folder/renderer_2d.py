@@ -2,7 +2,7 @@
 
 
 import game_engine_folder.world_manager as world_manager
-import entity_manager
+import game_engine_folder.entity_manager as entity_manager
 
 
 class Renderer:

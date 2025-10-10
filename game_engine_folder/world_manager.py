@@ -3,7 +3,7 @@
 import sys
 import random
 
-import entity_manager
+import game_engine_folder.entity_manager as entity_manager
 
 
 class TerrainGeneration:

@@ -2,7 +2,7 @@
 
 import sys
 
-import central_registry
+import game_engine_folder.central_registry as central_registry
 
 
 
