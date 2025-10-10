@@ -1,0 +1,32 @@
+
+
+
+
+
+
+To be added:
+
+structural (giga task)
+- decouple everything, core engine away from game logic,
+and finally end up with a python game engine.
+
+- Input safeguard
+- enemy entity and their spawning system
+- battle state and going in and out of it
+- the fucking battle itself babyyyyy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

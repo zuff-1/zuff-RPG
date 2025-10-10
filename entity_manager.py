@@ -50,10 +50,10 @@ class Entity:
 class Player(Entity):
     def __init__(
             self,
-            name = None,
+            name = "Default Name",
             position = None,
-            world = "overworld",
-            sprite = "☺",
+            world = "Default World",
+            sprite = "Default Sprite",
             ):
         super().__init__(
             name,
@@ -84,4 +84,4 @@ def test_Player():
     print(player.world)
 
 if __name__ == "__main__":
-    test_move()
+    pass

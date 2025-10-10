@@ -4,10 +4,10 @@ import sys
 import os
 
 import central_registry
-import world_manager
+import game_engine_folder.world_manager as world_manager
 import entity_manager
 import renderer_2d
-import user_interface
+import user_interface_folder.user_interface as user_interface
 import user_input_manager
 
 
@@ -36,6 +36,7 @@ def create_define_all_object():
             "zuff",
             [0, 0],
             "overworld",
+            "☺",
             )
         )
     )
@@ -108,9 +109,6 @@ def test_initialization():
             delta_coords[1],
             )
 
-
-# reminder to update renderer/terrain,
-# make every character same length
 
 
 

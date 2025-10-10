@@ -1,7 +1,7 @@
 
 
 
-import world_manager
+import game_engine_folder.world_manager as world_manager
 import entity_manager
 
 
@@ -25,8 +25,10 @@ class Renderer:
             print("")
             for column in range(self.render_distance):
                 render_target = [
-                    player.position[0] + (column - half),
-                    player.position[1] - (row - half),
+                    player.position[0]
+                    + (column - half),
+                    player.position[1]
+                    - (row - half),
                 ]
                 if tuple(render_target) not in world.dict:
                     world.assign_new_terrain(*render_target)
@@ -44,7 +46,7 @@ class Renderer:
                         [0],
                         )
                     text = text[0]
-                    print(text.center(2), end = "")
+                    print(text.center(3), end = "")
                 else:
                     text = (
                         world.dict
@@ -53,4 +55,4 @@ class Renderer:
                         [0].sprite
                         )
                     text = text[0]
-                    print(text.center(2), end = "")
+                    print(text.center(3), end = "")
