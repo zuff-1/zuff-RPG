@@ -31,7 +31,7 @@ class Renderer:
                     - (row - half),
                 ]
                 if tuple(render_target) not in world.dict:
-                    world.assign_new_terrain(*render_target)
+                    world.generate_terrain(*render_target)
                 else:
                     pass
                 if not(

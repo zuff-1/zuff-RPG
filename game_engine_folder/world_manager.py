@@ -1,25 +1,9 @@
 
 
 import sys
-import random
 
 import game_engine_folder.entity_manager as entity_manager
-
-
-class TerrainGeneration:
-    
-    def generate_tile():
-        rng = random.random()
-        if rng < 0.03:
-            return "V"
-        elif rng < 0.1:
-            return "v"
-        elif rng < 0.15:
-            return ";"
-        elif rng < 0.2:
-            return ","
-        else:
-            return "."
+import game_logic_folder.terrain_generation as terrain_generation
 
 
 class World:
@@ -31,7 +15,7 @@ class World:
         self.name = name
         self.dict = {}
 
-    def assign_new_terrain(
+    def make_new_coordinate(
             self,
             cords_x,
             cords_y,
@@ -40,20 +24,52 @@ class World:
             cords_x,
             cords_y,
             ] = {}
+        
+        self.dict[cords_x, cords_y,][
+            "entity"
+            ] = []
+        self.dict[cords_x, cords_y,][
+            "terrain"
+            ] = []
+
+    def assign_terrain(
+            self,
+            cords_x,
+            cords_y,
+            new_terrain,
+            ):       
         self.dict[
             cords_x,
             cords_y,
             ][
             "terrain"
             ] = [
+            new_terrain
+            ]
+    
+    def generate_terrain(
+            self,
+            cords_x,
+            cords_y,
+            ):
+        self.make_new_coordinate(
+            cords_x,
+            cords_y,
+            )
+        
+        new_terrain = (
+            terrain_generation.
             TerrainGeneration.
             generate_tile()
-            ]
-        
-        self.dict[cords_x, cords_y,][       # here is where all dict defaults are placed.
-            "entity"
-            ] = []
-        
+            )
+
+        self.assign_terrain(
+            cords_x,
+            cords_y,
+            new_terrain,
+            )
+
+
     def initialize_world(
             self,
             player: entity_manager.Player,
@@ -72,7 +88,7 @@ class World:
                     - (row - half),
                 ]
                 if tuple(generate_target) not in self.dict:
-                    World.assign_new_terrain(self, *generate_target)
+                    World.generate_terrain(self, *generate_target)
                 else:
                     pass
     

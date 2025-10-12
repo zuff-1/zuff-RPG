@@ -3,6 +3,7 @@
 import pytest
 import game_engine_folder.world_manager as world_manager
 import game_engine_folder.entity_manager as entity_manager
+import game_logic_folder.terrain_generation as terrain_generation
 
 
 
@@ -16,26 +17,19 @@ def player():
 player = player()
 
 
+def test_make_new_coordinate():
+    world.make_new_coordinate(0, 0)
 
-def test_generate_tile():
-    (
-    world_manager.
-    TerrainGeneration.
-    generate_tile()
-    )
+def test_assign_terrain():
+    terrain = terrain_generation.TerrainGeneration.generate_tile()
+    world.assign_terrain(0, 0, terrain)
 
-def test_assign_new_terrain():
-    (
-    world.assign_new_terrain(0, 0)
-    )
+def test_generate_terrain():
+    world.generate_terrain(0, 0)
 
 def test_initialize_world():
-    (
     world.initialize_world(player)
-    )
 
 def test_assign_entity():
-    (
     world.assign_entity(player)
-    )
 

@@ -72,16 +72,5 @@ class Player(Entity):
             target_position,
             )
 
-def test_Player():
-    player = Player(
-        "zuff",
-        [0, 0],
-        "overworld"
-        )
-    
-    print(player.name)
-    print(player.position)
-    print(player.world)
-
 if __name__ == "__main__":
     pass
